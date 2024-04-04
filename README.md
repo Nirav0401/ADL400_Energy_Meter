@@ -1,13 +1,6 @@
-# UART Asynchronous Example with Separate Receive and Transfer Tasks
+# UART Asynchronous Communication with GSM To Transmit Receive Messages and Making a Call
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
-
-This example demonstrates how two asynchronous tasks can use the same UART interface for communication. One can use
-this example to develop more complex applications for serial communication.
-
-The example starts two FreeRTOS tasks:
-1. The first task periodically transmits `Hello world` via the UART.
-2. The second task task listens, receives and prints data from the UART.
+This example shows how to use the GSM interface for sending and receiving messages, as well as making calls. It's a basic setup that you can build upon for more advanced serial communication applications.
 
 ## How to use example
 
@@ -18,8 +11,8 @@ development board to a computer, and a simple one-wire cable for shorting two pi
 
 ### Setup the Hardware
 
-The `RXD_PIN` and `TXD_PIN` which are configurable in the code (by default `GPIO4` and `GPIO5`) need to be shorted in
-order to receive back the same data which were sent out.
+The `RXD_PIN` and `TXD_PIN` which are configurable in the code (by default `GPIO32` and `GPIO14`) need to be configured in
+order to receive and transmit the data.
 
 ### Configure the project
 
@@ -41,15 +34,14 @@ See the Getting Started Guide for full steps to configure and use ESP-IDF to bui
 
 ## Example Output
 
-You will receive the following repeating output from the monitoring console:
+Following are the list of AT commands used in this project:
 ```
 ...
-I (3261) TX_TASK: Wrote 11 bytes
-I (4261) RX_TASK: Read 11 bytes: 'Hello world'
-I (4261) RX_TASK: 0x3ffb821c   48 65 6c 6c 6f 20 77 6f  72 6c 64                 |Hello world|
+AT+CMGF=1 : To convert SMS to text
+AT+CMGS=\"%s : Send text to mobile number
+ATD%s : To make a call
+AT+CMGL=\"ALL : It will respond with a list of all SMS messages stored in memory, including read, unread, sent, and received messages.
+AT+CMGR=1 : For reading messages (including the sender's phone number, timestamp, and message text).
 ...
 ```
 
-## Troubleshooting
-
-If you do not see any output from `RX_TASK` then check if you have the `RXD_PIN` and `TXD_PIN` pins shorted on the board.
