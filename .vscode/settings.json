@@ -1,0 +1,14 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.portWin": "COM3",
+  "idf.adapterTargetName": "esp32",
+  "cmake.cmakePath": "cmake.cmakePath",
+  "cmake.ctestPath": "C:\\Espressif\\v4.4.4\\esp-idf",
+  "cmake.cpackPath": "cmake.cmakePath",
+  "files.associations": {
+    "touch_pad.h": "c",
+    "array": "c",
+    "string": "c",
+    "string_view": "c"
+  }
+}
