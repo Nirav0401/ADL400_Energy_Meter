@@ -35,11 +35,11 @@ See the Getting Started Guide for full steps to configure and use ESP-IDF to bui
 ## Example Output
 
 Following are the list of AT commands used in this project:
--------------------------------------------------------------------------------------------------------------------------------------
+````
 AT+CMGF=1 : To convert SMS to text
 AT+CMGS=\"%s : Send text to mobile number
 ATD%s : To make a call
 AT+CMGL=\"ALL : It will respond with a list of all SMS messages stored in memory, including read, unread, sent, and received messages.
 AT+CMGR=1 : For reading messages (including the sender's phone number, timestamp, and message text).
--------------------------------------------------------------------------------------------------------------------------------------
+````
 
